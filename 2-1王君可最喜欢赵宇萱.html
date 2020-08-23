@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
  <head>
 
-<span style="font-size:18px;"> </span><span style="font-size:24px;"><meta http-equiv="refresh" content="40;URL=http://www.wangjunke.info/4王君可最喜欢赵宇萱.html"> </span> 
+<span style="font-size:18px;"> </span><span style="font-size:24px;"><meta http-equiv="refresh" content="40;URL=http://www.wangjunke.info/2王君可最喜欢赵宇萱.html"> </span> 
 <span style="font-size:24px;"> </span> 
 
   <meta charset="utf-8">
@@ -11,6 +11,44 @@
 
   <title>Junke Wang's Website</title>  
   
+<style type="text/css">
+ #myDiv{
+  display: inline-block;
+  width:1350px;
+  height:800px;
+  background: black;
+ 
+  color:hsla(1,60%,70%,1);
+  word-wrap:break-word;
+  font-size: xx-large;
+  line-height:40px;
+  letter-spacing:3px;
+  padding-left:3px;
+  text-indent:50px;
+  border-radius:6px;
+   -webkit-box-shadow: 3px 3px 3px 3px rgba(0,0,0,0.1);
+  -moz-box-shadow: 3px 3px 3px 3px rgba(0,0,0,0.1);
+  box-shadow: 3px 3px 3px 3px rgba(0,0,0,0.1);
+ }
+ </style>
+ <script type="text/javascript">
+ window.onload = function () {
+  var myDiv = document.getElementById("myDiv");
+  var contentArr = "<br/></br>   &nbsp;&nbsp; 曾经，有一个少年，他不善言辞、不太会和女孩子相处，一度认为自己只喜欢男人，甚至觉得室友是这个世界上最甜的人（狗头）... </br> &nbsp;&nbsp; 直到有一天他遇到了一个女孩，他发现自己偶然地在和这个女孩在一个省份、他们下学期都要去别的学校交换、他们都在听一首歌、他们逐渐将每天的聊天变成了一种仪式感... </br> &nbsp;&nbsp; 所以，男孩抱着被拒绝的心态向这个女孩子告白了，那个时候他们没有认识很久，但是男孩在信中写道：“我很怕，怕自己喜欢的女孩太优美好，自己如果不主动一点的话就没有机会把心里想说的话告诉她了... </br> &nbsp;&nbsp; 令男孩感到惊喜的是，女孩子答应了。然后他们就开始了特别特别甜的一段恋爱时光，让我们一起来回忆一下吧... ”".split("");
+  var content = "";
+  var index = 0;
+  var ID = setInterval(function () {
+  content += contentArr[index];
+  myDiv.innerHTML = content + "_";
+  index++;
+  if(index === contentArr.length){
+   myDiv.innerHTML = content ;
+   clearInterval(ID);
+   console.log("结束了");
+  }
+  },120);
+ }
+ </script>
 
 
 
@@ -57,9 +95,9 @@
 
 <div style="height:50px;"></div>
 
+<div id="myDiv"></div>
 
 
-<embed src="./赵老师为王老师做出的改变.pdf"  width="70%" height="1000px" align=center>
              
  
 
