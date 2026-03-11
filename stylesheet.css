@@ -64,3 +64,9 @@ name {
 span.highlight {
   background-color: #ffffd0;
 }
+
+.pub-note {
+  margin: 0 0 4px 0;
+  color: #666;
+  font-size: 13px;
+}
