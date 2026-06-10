@@ -1152,24 +1152,30 @@ h1 {
   display: grid;
   grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.88fr);
   gap: 12px;
-  margin: -12px 0 24px;
+  margin: -10px 0 24px;
+  padding: 12px 0;
+  border-top: 1px solid var(--line-soft);
+  border-bottom: 1px solid var(--line-soft);
 }
 
 .baseline-list div {
-  min-height: 92px;
-  padding: 14px 16px;
-  border: 1px solid var(--line-soft);
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.62);
+  min-height: 0;
+  padding: 0 16px;
+  border: 0;
+  background: transparent;
+}
+
+.baseline-list div + div {
+  border-left: 1px solid var(--line-soft);
 }
 
 .baseline-list strong,
 .baseline-list span {
-  display: block;
+  display: inline;
 }
 
 .baseline-list strong {
-  margin-bottom: 6px;
+  margin-right: 8px;
   color: #1f2937;
   font-size: 14px;
   font-weight: 700;
@@ -1179,7 +1185,7 @@ h1 {
 .baseline-list span {
   color: var(--muted);
   font-size: 14px;
-  line-height: 1.5;
+  line-height: 1.55;
 }
 
 .visual-analysis-grid {
@@ -1468,6 +1474,16 @@ h1 {
 
   .baseline-list {
     grid-template-columns: 1fr;
+  }
+
+  .baseline-list div {
+    padding: 0;
+  }
+
+  .baseline-list div + div {
+    padding-top: 10px;
+    border-left: 0;
+    border-top: 1px solid var(--line-soft);
   }
 
   .metric-guide {
