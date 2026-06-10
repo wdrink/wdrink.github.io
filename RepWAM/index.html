@@ -1,0 +1,669 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RepWAM: World Action Modeling with Representation Visual-Action Tokenizers</title>
+  <meta name="description" content="Project page for RepWAM, a representation-centric world action model with semantic visual-action tokenizers.">
+  <link rel="icon" type="image/png" href="assets/TEAI_logo.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main id="top">
+    <section class="hero">
+      <div class="hero-shell">
+        <div class="hero-copy">
+          <p class="hero-kicker">Representation-Centric World Action Modeling</p>
+          <h1>RepWAM: World Action Modeling with <span class="title-break">Representation Visual-Action Tokenizers</span></h1>
+          <p class="hero-authors">
+            <span>Junke Wang<sup>1</sup></span>
+            <span>Qihang Zhang<sup>2</sup></span>
+            <span>Shuai Yang<sup>2</sup></span>
+            <span>Yiming Luo<sup>2</sup></span>
+            <span>Yujun Shen<sup>2</sup></span>
+            <span>Zuxuan Wu<sup>1*</sup></span>
+            <span>Yu-Gang Jiang<sup>1*</sup></span>
+            <span>Yinghao Xu<sup>2,3,*</sup></span>
+          </p>
+          <p class="hero-affiliations">
+            <span><sup>1</sup> Institute of Trustworthy Embodied AI, Fudan University</span>
+            <span><sup>2</sup> Robbyant, Ant Group</span>
+            <span><sup>3</sup> Hong Kong University of Science and Technology</span>
+            <span class="corresponding-affiliation"><sup>*</sup> Corresponding authors</span>
+          </p>
+          <div class="hero-links" aria-label="Project links">
+            <a class="nav-button" href="paper.pdf">
+              <span class="nav-icon nav-icon-arxiv" aria-hidden="true">arXiv</span>
+              <span>Paper</span>
+            </a>
+            <a class="nav-button" href="https://github.com/wdrink/RepWAM_homepage">
+              <svg class="nav-icon nav-icon-github" viewBox="0 0 16 16" aria-hidden="true">
+                <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/>
+              </svg>
+              <span>Code</span>
+            </a>
+            <a class="nav-button" href="#citation">
+              <svg class="nav-icon nav-icon-scholar" viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M5.2 9.2 12 5.7l6.8 3.5-6.8 3.5-6.8-3.5Z"/>
+                <path d="M8.2 12.2v3c0 .95 1.7 1.72 3.8 1.72s3.8-.77 3.8-1.72v-3L12 14.18l-3.8-1.98Z"/>
+              </svg>
+              <span>BibTeX</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="feature-section" id="results">
+      <h2 class="section-title">Real-Robot Deployment</h2>
+      <p class="section-description">
+        RepWAM learns semantic visual and action latents in a shared representation space, then models future states and action transitions under language instructions.
+      </p>
+      <div class="chart-container">
+        <div class="chart-label">Closed-Loop Success Rate</div>
+        <p class="inline-demo-description">
+          On three dual-arm manipulation tasks, RepWAM outperforms existing vision-language-action models (e.g., &pi;0.5) and world-action models (e.g., Motus and Lingbot-VA).
+        </p>
+
+        <figure class="chart-figure">
+          <img src="assets/real.png" alt="Real-world robot success rates for RepWAM compared with baseline policies.">
+        </figure>
+        <div class="inline-demo-block">
+          <h2 class="inline-demo-title">Real Robot Demos</h2>
+          
+          <div class="video-carousel-side" id="real-robot-carousel">
+            <div class="carousel-sidebar" aria-label="Real robot video selector">
+              <div class="sidebar-category">
+                <div class="sidebar-category-title">Real Robot</div>
+                <button class="sidebar-thumb active" type="button"
+                  data-video-src="assets/pick_fruit_demo_x5.mp4"
+                  data-main-title="Pick the fruits">
+                  <video src="assets/pick_fruit_demo_x5.mp4" autoplay loop muted playsinline preload="metadata"></video>
+                  <span class="sidebar-thumb-label">Pick fruit</span>
+                </button>
+                <button class="sidebar-thumb" type="button"
+                  data-video-src="assets/push_drawer_demo_x5.mp4"
+                  data-main-title="Push the drawer">
+                  <video src="assets/push_drawer_demo_x5.mp4" autoplay loop muted playsinline preload="metadata"></video>
+                  <span class="sidebar-thumb-label">Push drawer</span>
+                </button>
+                <button class="sidebar-thumb" type="button"
+                  data-video-src="assets/insert_tube_demo_x5.mp4"
+                  data-main-title="Insert the test tube">
+                  <video src="assets/insert_tube_demo_x5.mp4" autoplay loop muted playsinline preload="metadata"></video>
+                  <span class="sidebar-thumb-label">Insert tube</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="carousel-main-side">
+              <div class="video-caption" id="real-robot-main-title">Pick the fruits</div>
+              <video id="real-robot-main-video" controls muted autoplay loop playsinline preload="metadata">
+                <source src="assets/pick_fruit_demo_x5.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+        </div>
+        <div class="metric-row" aria-label="Real robot result highlights">
+          <div>
+            <strong>60%</strong>
+            <span>Picking fruits, +50% over &pi;0.5</span>
+          </div>
+          <div>
+            <strong>80%</strong>
+            <span>Pushing the drawer, +30% over &pi;0.5</span>
+          </div>
+          <div>
+            <strong>60%</strong>
+            <span>Inserting the tube, +50% over &pi;0.5</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="feature-section" id="method">
+      <h2 class="section-title">How It Works</h2>
+      <div class="method-intro">
+        <p>
+          At the core of RepWAM is RepViTok, a representation visual-action tokenizer that learns visual tokens with pixel reconstruction and semantic alignment. On top of this visual latent space, RepViTok learns latent action tokens as compact transitions between visual states.
+        </p>
+        <p>
+          With paired video and action latents, RepWAM trains a chunk-wise causal world action model to predict future visual states together with the latent actions that connect them.
+        </p>
+      </div>
+
+      <div class="howitworks-content">
+        <div class="howitworks-subsection">
+          <h3 class="howitworks-subtitle">Representation visual-action tokenization</h3>
+          <p class="howitworks-text">
+            RepViTok keeps visual states and action-induced scene changes in the same latent space, allowing the WAM to learn manipulation-relevant dynamics rather than only low-level pixel details.
+          </p>
+          <figure class="method-figure">
+            <img src="assets/network.png" alt="Architecture diagram of the RepViTok representation visual-action tokenizer.">
+          </figure>
+        </div>
+
+        <div class="howitworks-subsection">
+          <h3 class="howitworks-subtitle">Causal world action modeling</h3>
+          <p class="howitworks-text">
+            The causal WAM takes language instructions and the first image observation as input, then outputs future visual states and the actions that connect them. It uses a causal diffusion transformer with a video expert and an action expert: attention weights are shared, while feed-forward network weights are expert-specific.
+          </p>
+          <div class="wam-flow" aria-label="Causal WAM training pipeline">
+            <div class="flow-column flow-column-io">
+              <h4>Inputs</h4>
+              <div class="language-token">Language instruction</div>
+              <div class="token-stream">
+                <span class="token-stream-label">Observed video latents</span>
+                <div class="video-token-strip" aria-hidden="true">
+                  <span></span><span></span><span></span><span></span>
+                </div>
+              </div>
+              <p>Language instructions and the first image observation.</p>
+            </div>
+            <div class="flow-arrow" aria-hidden="true"></div>
+            <div class="flow-column flow-column-main">
+              <h4>Causal WAM</h4>
+              <div class="wam-core" aria-hidden="true">
+                <div class="core-track core-track-video"><span>v<sub>t</sub></span><span>v<sub>t+1</sub></span><span>v<sub>t+2</sub></span></div>
+                <div class="core-track core-track-action"><span>a<sub>t</sub></span><span>a<sub>t+1</sub></span><span>a<sub>t+2</sub></span></div>
+              </div>
+              <p>Video and action experts share attention weights but use separate FFN weights.</p>
+            </div>
+            <div class="flow-arrow" aria-hidden="true"></div>
+            <div class="flow-column flow-column-io">
+              <h4>Outputs</h4>
+              <div class="token-stream">
+                <span class="token-stream-label">Future video latents</span>
+                <div class="video-token-strip video-token-strip-future" aria-hidden="true">
+                  <span></span><span></span><span></span><span></span>
+                </div>
+              </div>
+              <div class="token-stream">
+                <span class="token-stream-label">Action outputs</span>
+                <div class="action-token-strip" aria-hidden="true">
+                  <span></span><span></span><span></span>
+                </div>
+              </div>
+              <p>Future visual states and actions that connect them.</p>
+            </div>
+          </div>
+          <div class="training-step-row" aria-label="RepWAM training stages">
+            <div class="training-step-card">
+              <strong>Stage 1</strong>
+              <h4>Visual-action pretraining</h4>
+              <div class="stage-pipeline" aria-label="Stage 1 language and observed videos to future videos and latent actions">
+                <div class="stage-bundle">
+                  <span class="stage-language">Language</span>
+                  <div class="stage-video-strip" aria-hidden="true"><span></span><span></span><span></span></div>
+                  <small>Observed videos</small>
+                </div>
+                <span class="stage-arrow" aria-hidden="true"></span>
+                <div class="stage-bundle">
+                  <div class="stage-video-strip stage-video-strip-future" aria-hidden="true"><span></span><span></span><span></span></div>
+                  <div class="stage-action-strip" aria-hidden="true"><span></span><span></span><span></span></div>
+                  <small>Future videos + latent actions</small>
+                </div>
+              </div>
+              <span>Learn paired video and latent-action chunks from RepViTok.</span>
+            </div>
+            <div class="training-step-card training-step-card-blue">
+              <strong>Stage 2</strong>
+              <h4>Robot action adaptation</h4>
+              <div class="stage-pipeline" aria-label="Stage 2 language and observed videos to future videos and robot actions">
+                <div class="stage-bundle">
+                  <span class="stage-language">Language</span>
+                  <div class="stage-video-strip" aria-hidden="true"><span></span><span></span><span></span></div>
+                  <small>Observed videos</small>
+                </div>
+                <span class="stage-arrow" aria-hidden="true"></span>
+                <div class="stage-bundle">
+                  <div class="stage-video-strip stage-video-strip-future" aria-hidden="true"><span></span><span></span><span></span></div>
+                  <div class="stage-robot-arm" aria-hidden="true">
+                    <span class="arm-base"></span>
+                    <span class="arm-link arm-link-one"></span>
+                    <span class="arm-joint arm-joint-one"></span>
+                    <span class="arm-link arm-link-two"></span>
+                    <span class="arm-joint arm-joint-two"></span>
+                    <span class="arm-gripper"></span>
+                  </div>
+                  <small>Future videos + robot actions</small>
+                </div>
+              </div>
+              <span>Map latent actions to executable real-robot trajectories.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="feature-section" id="robotwin">
+      <h2 class="section-title">RoboTwin Benchmark</h2>
+      
+      <div class="metric-row metric-row-wide" aria-label="RoboTwin benchmark highlights">
+        <div>
+          <strong>No WAN Pretrain</strong>
+          <span>RepWAM trains from scratch.</span>
+        </div>
+        <div>
+          <strong> 89.3 / 88.4</strong>
+          <span>Easy / Hard 50-task average.</span>
+        </div>
+        <div>
+          <strong>+8.6 / +7.1</strong>
+          <span>Significant gains over WAN2.2 VAE.</span>
+        </div>
+      </div>
+
+      <div class="result-table-grid">
+        <p class="table-note">
+          Without WAN pretraining, RepWAM-5B still surpasses &pi;0.5 and Motus on the 50-task average.
+        </p>
+        <figure class="table-panel">
+          <figcaption>Main RoboTwin 2.0 Benchmark</figcaption>
+          <div class="table-scroll">
+            <table class="data-table" aria-label="Main RoboTwin 2.0 benchmark table">
+              <thead>
+                <tr>
+                  <th rowspan="2">Metric</th>
+                  <th colspan="2">&pi;0.5</th>
+                  <th colspan="2">Motus</th>
+                  <th colspan="2">Lingbot-VA</th>
+                  <th colspan="2">Ours 1.3B</th>
+                  <th colspan="2">Ours 5B</th>
+                </tr>
+                <tr>
+                  <th>Easy</th><th>Hard</th>
+                  <th>Easy</th><th>Hard</th>
+                  <th>Easy</th><th>Hard</th>
+                  <th>Easy</th><th>Hard</th>
+                  <th>Easy</th><th>Hard</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Backbone pretrained</td>
+                  <td colspan="2">Yes</td>
+                  <td colspan="2">Yes</td>
+                  <td colspan="2">Yes</td>
+                  <td colspan="2" class="ours">No</td>
+                  <td colspan="2" class="ours">No</td>
+                </tr>
+                <tr>
+                  <td>Average hor=2</td>
+                  <td>79.3</td><td>73.0</td>
+                  <td>85.2</td><td>80.9</td>
+                  <td>85.3</td><td>86.9</td>
+                  <td class="ours">85.7</td><td class="ours">84.0</td>
+                  <td class="ours best">87.4</td><td class="ours best">87.6</td>
+                </tr>
+                <tr>
+                  <td>Average hor=3</td>
+                  <td>78.6</td><td>67.4</td>
+                  <td>85.0</td><td>84.2</td>
+                  <td>89.6</td><td>90.6</td>
+                  <td class="ours best">92.0</td><td class="ours">85.4</td>
+                  <td class="ours">88.0</td><td class="ours">90.4</td>
+                </tr>
+                <tr>
+                  <td>Average 50 tasks</td>
+                  <td>82.7</td><td>76.8</td>
+                  <td>88.7</td><td>87.0</td>
+                  <td>92.9</td><td>91.6</td>
+                  <td class="ours">86.6</td><td class="ours">83.1</td>
+                  <td class="ours">89.3</td><td class="ours">88.4</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </figure>
+
+        <p class="table-note">
+          For a fair comparison, we train the 1.3B WAM from scratch with WAN2.2 VAE and compare it against the same 1.3B setup using RepViTok. RepViTok consistently outperforms WAN2.2 VAE across horizons and difficulty levels.
+        </p>
+        <figure class="table-panel">
+          <figcaption>Tokenizer Ablation for 1.3B WAM</figcaption>
+          <div class="table-scroll">
+            <table class="data-table compact-table" aria-label="RoboTwin VAE ablation table">
+              <thead>
+                <tr>
+                  <th rowspan="2">Metric</th>
+                  <th colspan="2">WAN2.2 VAE</th>
+                  <th colspan="2">RepViTok</th>
+                </tr>
+                <tr>
+                  <th>Easy</th><th>Hard</th>
+                  <th>Easy</th><th>Hard</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Average hor=1</td><td>81.1</td><td>78.4</td><td class="ours best">86.2</td><td class="ours best">83.1</td></tr>
+                <tr><td>Average hor=2</td><td>75.5</td><td>73.9</td><td class="ours best">85.7</td><td class="ours best">84.0</td></tr>
+                <tr><td>Average hor=3</td><td>67.2</td><td>68.0</td><td class="ours best">92.0</td><td class="ours best">85.4</td></tr>
+                <tr><td>Average 50 tasks</td><td>78.0</td><td>76.0</td><td class="ours best">86.6</td><td class="ours best">83.1</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </figure>
+      </div>
+    </section>
+
+    <section class="feature-section" id="analysis">
+      <h2 class="section-title">Visual Action Latents Analysis</h2>
+      <div class="metric-guide" aria-label="Evaluation metric guide">
+        <article>
+          <h3>Reconstruction</h3>
+          <p><strong>PSNR</strong>, <strong>SSIM</strong>, <strong>rFID</strong>, and <strong>rFVD</strong> for visual reconstruction fidelity.</p>
+        </article>
+        <article>
+          <h3>World Modeling</h3>
+          <p><strong>gFVD</strong> for world-model video rollout quality.</p>
+        </article>
+        <article>
+          <h3>Action Accuracy</h3>
+          <p><strong>OLS</strong> for open-loop action prediction.</p>
+        </article>
+        <article>
+          <h3>Real Robot</h3>
+          <p><strong>PickFruit</strong> for closed-loop hardware success.</p>
+        </article>
+      </div>
+      <p class="metric-note">
+        <strong>S</strong> = seen AgiBot tasks, <strong>U</strong> = unseen held-out tasks. ↑ higher is better, ↓ lower is better.
+      </p>
+
+      <div class="analysis-section">
+        <h3 class="analysis-title">Visual Tokenization</h3>
+        <p class="analysis-text">
+          We design two tokenizer baselines for comparison:
+        </p>
+        <div class="baseline-list" aria-label="Visual tokenizer baselines">
+          <div>
+            <strong>WAN2.2 VAE</strong>
+            <span>A reconstruction-oriented video VAE used in strong video generation systems.</span>
+          </div>
+          <div>
+            <strong>ViTok</strong>
+            <span>A ViT-based VAE without semantic representation alignment.</span>
+          </div>
+        </div>
+        <p class="analysis-text analysis-summary">
+          Compared with both baselines, RepViTok performs best on world modeling and action transfer.
+        </p>
+        <div class="analysis-stack">
+          <figure class="table-panel">
+            <figcaption>World Modeling and Action Transfer</figcaption>
+            <div class="table-scroll">
+              <table class="data-table wide-analysis-table" aria-label="Visual tokenizer world modeling and action transfer table">
+                <thead>
+                  <tr>
+                    <th rowspan="2">Tokenizer</th>
+                    <th colspan="4">Eval Seen (S)</th>
+                    <th colspan="4">Eval Unseen (U)</th>
+                    <th rowspan="2">PickFruit ↑</th>
+                  </tr>
+                  <tr>
+                    <th>gFVD ↓</th>
+                    <th>PSNR ↑</th>
+                    <th>SSIM ↑</th>
+                    <th>OLS ↑</th>
+                    <th>gFVD ↓</th>
+                    <th>PSNR ↑</th>
+                    <th>SSIM ↑</th>
+                    <th>OLS ↑</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>WAN2.2 VAE</td>
+                    <td>67.42</td>
+                    <td>17.34</td>
+                    <td>0.67</td>
+                    <td>13.68</td>
+                    <td>83.98</td>
+                    <td>16.86</td>
+                    <td>0.64</td>
+                    <td>11.21</td>
+                    <td>20%</td>
+                  </tr>
+                  <tr>
+                    <td>ViTok</td>
+                    <td>69.23</td>
+                    <td>17.21</td>
+                    <td>0.68</td>
+                    <td>16.29</td>
+                    <td>80.14</td>
+                    <td>17.19</td>
+                    <td class="best">0.67</td>
+                    <td>13.81</td>
+                    <td>10%</td>
+                  </tr>
+                  <tr>
+                    <td class="ours">RepViTok</td>
+                    <td class="ours best">61.01</td>
+                    <td class="ours best">18.47</td>
+                    <td class="ours best">0.70</td>
+                    <td class="ours best">18.82</td>
+                    <td class="ours best">72.91</td>
+                    <td class="ours best">17.72</td>
+                    <td class="ours best">0.67</td>
+                    <td class="ours best">14.15</td>
+                    <td class="ours best">30%</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </figure>
+
+          <p class="analysis-text analysis-summary">
+            RepViTok also maintains strong reconstruction quality across ImageNet and UCF101, preserving pixel-level fidelity while retaining semantic details such as faces and text.
+          </p>
+          <figure class="table-panel">
+            <figcaption>Reconstruction Quality</figcaption>
+            <div class="table-scroll">
+              <table class="data-table reconstruction-table" aria-label="Visual tokenizer reconstruction quality table">
+                <thead>
+                  <tr>
+                    <th rowspan="2">Tokenizer</th>
+                    <th colspan="3">ImageNet 256</th>
+                    <th colspan="3">ImageNet 512</th>
+                    <th colspan="3">UCF101 256×17</th>
+                    <th colspan="3">UCF101 512×17</th>
+                  </tr>
+                  <tr>
+                    <th>rFID ↓</th>
+                    <th>PSNR ↑</th>
+                    <th>SSIM ↑</th>
+                    <th>rFID ↓</th>
+                    <th>PSNR ↑</th>
+                    <th>SSIM ↑</th>
+                    <th>rFVD ↓</th>
+                    <th>PSNR ↑</th>
+                    <th>SSIM ↑</th>
+                    <th>rFVD ↓</th>
+                    <th>PSNR ↑</th>
+                    <th>SSIM ↑</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>WAN2.2 VAE</td>
+                    <td class="best">0.50</td>
+                    <td>28.16</td>
+                    <td>0.87</td>
+                    <td class="best">0.20</td>
+                    <td>30.48</td>
+                    <td>0.90</td>
+                    <td>4.28</td>
+                    <td class="best">36.61</td>
+                    <td class="best">0.98</td>
+                    <td>0.68</td>
+                    <td class="best">41.45</td>
+                    <td class="best">0.99</td>
+                  </tr>
+                  <tr>
+                    <td>ViTok</td>
+                    <td>0.96</td>
+                    <td>28.65</td>
+                    <td class="best">0.89</td>
+                    <td>0.24</td>
+                    <td>30.77</td>
+                    <td class="best">0.92</td>
+                    <td>1.23</td>
+                    <td>35.52</td>
+                    <td>0.97</td>
+                    <td class="best">0.16</td>
+                    <td>40.68</td>
+                    <td>0.98</td>
+                  </tr>
+                  <tr>
+                    <td class="ours">RepViTok</td>
+                    <td class="ours">0.80</td>
+                    <td class="ours best">28.90</td>
+                    <td class="ours best">0.89</td>
+                    <td class="ours">0.23</td>
+                    <td class="ours best">31.00</td>
+                    <td class="ours best">0.92</td>
+                    <td class="ours best">1.09</td>
+                    <td class="ours">36.03</td>
+                    <td class="ours">0.97</td>
+                    <td class="ours best">0.16</td>
+                    <td class="ours">41.12</td>
+                    <td class="ours">0.98</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </figure>
+
+          <div class="visual-comparison-row">
+            <article class="visual-card cfg-card">
+              <div>
+                <h4>Less dependence on CFG</h4>
+                <p>RepWAM performs best at video CFG scale 1.0 on RoboTwin 2.0, so inference can avoid the extra unconditional video branch and run faster.</p>
+              </div>
+              <img src="assets/robotwin_cfg_curve.png" alt="Video classifier-free guidance curve on RoboTwin.">
+            </article>
+
+            <article class="visual-card reconstruction-card">
+              <div>
+                <h4>High-fidelity reconstruction</h4>
+                <p>RepViTok preserves fine-grained details well, including human faces, object boundaries, and text regions.</p>
+              </div>
+              <img src="assets/reconstruction.png" alt="RepViTok reconstruction examples.">
+            </article>
+          </div>
+        </div>
+      </div>
+
+      <div class="analysis-section">
+        <h3 class="analysis-title">Action Tokenization</h3>
+        <p class="analysis-text">
+          We compare two-stage training with two baselines:
+        </p>
+        <div class="baseline-list" aria-label="Action tokenization baselines">
+          <div>
+            <strong>w/o latent actions</strong>
+            <span>Removes the latent-action pathway and trains directly with robot actions.</span>
+          </div>
+          <div>
+            <strong>Joint Pred</strong>
+            <span>Asks the video expert to predict video and action latents jointly.</span>
+          </div>
+        </div>
+        <p class="analysis-text analysis-summary">
+          <span>Two-stage latent-action training achieves the best world-modeling, action-prediction, and real-robot results among the ablations.</span>
+        </p>
+        <div class="analysis-stack">
+          <figure class="table-panel">
+            <div class="table-scroll">
+              <table class="data-table wide-analysis-table" aria-label="Latent action training ablation table">
+                <thead>
+                  <tr>
+                    <th rowspan="2">Training</th>
+                    <th colspan="4">Eval Seen (S)</th>
+                    <th colspan="4">Eval Unseen (U)</th>
+                    <th rowspan="2">PickFruit ↑</th>
+                  </tr>
+                  <tr>
+                    <th>gFVD ↓</th>
+                    <th>PSNR ↑</th>
+                    <th>SSIM ↑</th>
+                    <th>OLS ↑</th>
+                    <th>gFVD ↓</th>
+                    <th>PSNR ↑</th>
+                    <th>SSIM ↑</th>
+                    <th>OLS ↑</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>w/o latent actions</td>
+                    <td>61.01</td>
+                    <td>18.47</td>
+                    <td>0.70</td>
+                    <td>18.82</td>
+                    <td>72.91</td>
+                    <td>17.72</td>
+                    <td>0.67</td>
+                    <td>14.15</td>
+                    <td>30%</td>
+                  </tr>
+                  <tr>
+                    <td>Joint Pred</td>
+                    <td>94.25</td>
+                    <td>15.24</td>
+                    <td>0.61</td>
+                    <td>18.52</td>
+                    <td>98.77</td>
+                    <td>15.09</td>
+                    <td>0.55</td>
+                    <td>15.22</td>
+                    <td>20%</td>
+                  </tr>
+                  <tr>
+                    <td class="ours">Two Stages</td>
+                    <td class="ours best">48.23</td>
+                    <td class="ours best">22.86</td>
+                    <td class="ours best">0.75</td>
+                    <td class="ours best">19.87</td>
+                    <td class="ours best">58.83</td>
+                    <td class="ours best">19.93</td>
+                    <td class="ours best">0.74</td>
+                    <td class="ours best">16.98</td>
+                    <td class="ours best">50%</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </figure>
+          <p class="analysis-callout">
+            RepViTok latent actions also transfer better than LAPA to real robot action decoding, yielding lower inverse-dynamics action loss.
+          </p>
+          <article class="visual-card action-card action-card-wide">
+            <img src="assets/latents.png" alt="Latent action visualization and IDM action loss comparison.">
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="feature-section citation-section" id="citation">
+      <h2 class="section-title">Citation</h2>
+      <p class="citation-note">If you find our work useful, please consider citing us.</p>
+      <div class="citation-panel">
+        <pre><code>@article{wang2026repwam,
+  title  = {RepWAM: World Action Modeling with Representation Visual-Action Tokenizers},
+  author = {Wang, Junke and Zhang, Qihang and Yang, Shuai and Luo, Yiming and Shen, Yujun and Wu, Zuxuan and Jiang, Yu-Gang and Xu, Yinghao},
+  year   = {2026}
+}</code></pre>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>RepWAM: World Action Modeling with Representation Visual-Action Tokenizers.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
