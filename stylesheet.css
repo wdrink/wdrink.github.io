@@ -1,0 +1,271 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: #f6f8fb;
+}
+
+body {
+  margin: 0;
+  color: #172033;
+  line-height: 1.56;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: #176eb8;
+  text-decoration: none;
+  transition: color .18s ease;
+}
+
+a:focus,
+a:hover {
+  color: #c56a13;
+  text-decoration: none;
+}
+
+body,
+td,
+th,
+tr,
+p,
+a {
+  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-size: 15px;
+}
+
+p {
+  margin: 0;
+}
+
+strong {
+  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-size: 15px;
+}
+
+heading {
+  display: block;
+  padding-bottom: 9px;
+  border-bottom: 1px solid #e5eaf1;
+  color: #0f172a;
+  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-size: 23px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+papertitle {
+  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+name {
+  display: block;
+  color: #0f172a;
+  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-size: 34px;
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+.page-shell {
+  width: min(880px, calc(100% - 48px)) !important;
+  margin: 42px auto 30px;
+  padding: 38px 46px 26px;
+  border: 1px solid #e8edf3;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 18px 45px rgba(15, 23, 42, .06);
+}
+
+.page-shell>tbody>tr>td {
+  padding: 0;
+}
+
+.profile-section,
+.section-table {
+  width: 100% !important;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.profile-copy {
+  padding: 0;
+}
+
+.profile-name {
+  margin: 0 0 24px;
+  text-align: center;
+}
+
+.bio {
+  max-width: 790px;
+  margin: 0 0 13px;
+  color: #263244;
+  line-height: 1.62;
+}
+
+.profile-contact {
+  margin-top: 17px;
+  color: #111827;
+}
+
+.profile-links {
+  margin-top: 20px;
+}
+
+.profile-links a {
+  font-weight: 700;
+}
+
+.profile-links span {
+  margin: 0 12px;
+  color: #94a3b8;
+}
+
+.section-table {
+  margin-top: 34px;
+}
+
+.section-table td {
+  padding: 0;
+}
+
+.section-table tr:first-child td {
+  padding-bottom: 8px;
+}
+
+.section-table tr[onmouseout] td {
+  padding: 13px 0 14px 12px;
+  border-bottom: 1px solid #edf1f5;
+  border-left: 3px solid transparent;
+  transition: background-color .18s ease, border-color .18s ease;
+}
+
+.section-table tr[onmouseout]:hover td {
+  border-left-color: #9cc4ec;
+  background: #f8fbff;
+}
+
+.section-table tr[onmouseout] a[href*="github.com"] {
+  display: inline-block;
+  margin-left: 4px;
+  font-size: 14px;
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+.section-table tr:last-child td {
+  border-bottom: 0;
+}
+
+.services p,
+.awards p {
+  margin-top: 10px;
+  color: #263244;
+  line-height: 1.55;
+}
+
+.one {
+  width: 160px;
+  height: 160px;
+  position: relative;
+}
+
+.two {
+  width: 160px;
+  height: 160px;
+  position: absolute;
+  transition: opacity .2s ease-in-out;
+  -moz-transition: opacity .2s ease-in-out;
+  -webkit-transition: opacity .2s ease-in-out;
+}
+
+.fade {
+  transition: opacity .2s ease-in-out;
+  -moz-transition: opacity .2s ease-in-out;
+  -webkit-transition: opacity .2s ease-in-out;
+}
+
+span.highlight {
+  background-color: #ffffd0;
+}
+
+.pub-note {
+  margin: 0;
+  color: #64748b;
+  font-size: 13px;
+}
+
+.technical-reports .technical-heading-cell {
+  padding-bottom: 6px;
+}
+
+.technical-reports .pub-note-cell {
+  padding-top: 0;
+  padding-bottom: 2px;
+}
+
+.technical-reports .first-report td {
+  padding-top: 10px;
+}
+
+.footer-table {
+  margin-top: 30px !important;
+  color: #64748b;
+}
+
+.footer-table td {
+  padding-top: 18px !important;
+  border-top: 1px solid #e5eaf1;
+}
+
+.footer-table div,
+.footer-table a {
+  font-size: 12px;
+}
+
+@media (max-width: 640px) {
+  html {
+    background: #fff;
+  }
+
+  .page-shell {
+    width: 100% !important;
+    margin: 0;
+    padding: 28px 20px 22px;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  body,
+  td,
+  th,
+  tr,
+  p,
+  a,
+  strong,
+  papertitle {
+    font-size: 14px;
+  }
+
+  name {
+    font-size: 30px;
+  }
+
+  heading {
+    font-size: 21px;
+  }
+
+  .section-table {
+    margin-top: 28px;
+  }
+
+  .section-table tr[onmouseout] td {
+    padding: 12px 0 13px 10px;
+  }
+}
