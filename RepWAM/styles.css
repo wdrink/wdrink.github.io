@@ -741,11 +741,12 @@ h1 {
   grid-template-columns: minmax(0, 1fr) 32px minmax(0, 1fr);
   gap: 10px;
   align-items: center;
+  min-height: 138px;
   margin-bottom: 12px;
 }
 
 .stage-bundle {
-  min-height: 112px;
+  min-height: 138px;
   display: grid;
   align-content: center;
   gap: 8px;
@@ -797,6 +798,8 @@ h1 {
 .stage-action-strip {
   display: grid;
   gap: 5px;
+  min-height: 44px;
+  align-content: center;
 }
 
 .stage-action-strip {
@@ -1048,6 +1051,15 @@ h1 {
   background: rgba(255, 255, 255, 0.54);
 }
 
+.metric-overview {
+  max-width: 820px;
+  margin: -16px auto 18px;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.65;
+  text-align: center;
+}
+
 .metric-guide article {
   min-height: 0;
   padding: 0 14px;
@@ -1261,8 +1273,19 @@ h1 {
 }
 
 .reconstruction-table {
-  min-width: 1120px;
-  font-size: 12px;
+  min-width: 0;
+  table-layout: fixed;
+  font-size: 11px;
+}
+
+.reconstruction-table th,
+.reconstruction-table td {
+  padding: 7px 5px;
+}
+
+.reconstruction-table th:first-child,
+.reconstruction-table td:first-child {
+  width: 92px;
 }
 
 .visual-comparison-row {

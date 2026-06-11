@@ -147,7 +147,7 @@
         <div class="howitworks-subsection">
           <h3 class="howitworks-subtitle">Causal world action modeling</h3>
           <p class="howitworks-text">
-            The causal WAM takes language instructions and the first image observation as input, then outputs future visual states and the actions that connect them. It uses a causal diffusion transformer with a video expert and an action expert: attention weights are shared, while feed-forward network weights are expert-specific.
+            The causal WAM takes language instructions and the first image observation as input, then outputs future visual states and the corresponding actions. It uses a causal diffusion transformer with a video expert and an action expert: attention weights are shared, while feed-forward network weights are expert-specific.
           </p>
           <div class="wam-flow" aria-label="Causal WAM training pipeline">
             <div class="flow-column flow-column-io">
@@ -185,7 +185,7 @@
                   <span></span><span></span><span></span>
                 </div>
               </div>
-              <p>Future visual states and actions that connect them.</p>
+              <p>Future visual states and actions.</p>
             </div>
           </div>
           <div class="training-step-row" aria-label="RepWAM training stages">
@@ -350,6 +350,9 @@
 
     <section class="feature-section" id="analysis">
       <h2 class="section-title">Visual Action Latents Analysis</h2>
+      <p class="metric-overview">
+        We report metrics across four aspects for a comprehensive comparison: reconstruction, world modeling, action accuracy, and real-robot deployment.
+      </p>
       <div class="metric-guide" aria-label="Evaluation metric guide">
         <article>
           <h3>Reconstruction</h3>
@@ -361,11 +364,11 @@
         </article>
         <article>
           <h3>Action Accuracy</h3>
-          <p><strong>OLS</strong> for open-loop action prediction.</p>
+          <p><strong>OLS</strong> for open-loop execution success rate.</p>
         </article>
         <article>
           <h3>Real Robot</h3>
-          <p><strong>PickFruit</strong> for closed-loop hardware success.</p>
+          <p><strong>PickFruit</strong> for closed-loop execution success rate.</p>
         </article>
       </div>
       <p class="metric-note">
@@ -380,11 +383,11 @@
         <div class="baseline-list" aria-label="Visual tokenizer baselines">
           <div>
             <strong>WAN2.2 VAE</strong>
-            <span>A reconstruction-oriented video VAE used in strong video generation systems.</span>
+            <span>A reconstruction-oriented video VAE adopted by WAN.</span>
           </div>
           <div>
             <strong>ViTok</strong>
-            <span>A ViT-based VAE without semantic representation alignment.</span>
+            <span>A ViT-based VAE without semantic alignment.</span>
           </div>
         </div>
         <p class="analysis-text analysis-summary">
@@ -392,7 +395,6 @@
         </p>
         <div class="analysis-stack">
           <figure class="table-panel">
-            <figcaption>World Modeling and Action Transfer</figcaption>
             <div class="table-scroll">
               <table class="data-table wide-analysis-table" aria-label="Visual tokenizer world modeling and action transfer table">
                 <thead>
@@ -459,7 +461,6 @@
             RepViTok also maintains strong reconstruction quality across ImageNet and UCF101, preserving pixel-level fidelity while retaining semantic details such as faces and text.
           </p>
           <figure class="table-panel">
-            <figcaption>Reconstruction Quality</figcaption>
             <div class="table-scroll">
               <table class="data-table reconstruction-table" aria-label="Visual tokenizer reconstruction quality table">
                 <thead>
