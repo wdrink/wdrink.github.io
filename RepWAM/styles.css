@@ -1052,8 +1052,8 @@ h1 {
 }
 
 .metric-overview {
-  max-width: 820px;
-  margin: -16px auto 18px;
+  max-width: 640px;
+  margin: 0 auto 18px;
   color: var(--muted);
   font-size: 15px;
   line-height: 1.65;
