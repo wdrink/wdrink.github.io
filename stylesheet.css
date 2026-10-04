@@ -162,6 +162,16 @@ name {
   border-bottom: 0;
 }
 
+.blogs .blog-entry td {
+  padding: 13px 0 14px;
+  border-bottom: 1px solid #edf1f5;
+  transition: background-color .18s ease;
+}
+
+.blogs .blog-entry:hover td {
+  background: #f8fbff;
+}
+
 .services p,
 .awards p {
   margin-top: 10px;
@@ -267,5 +277,9 @@ span.highlight {
 
   .section-table tr[onmouseout] td {
     padding: 12px 0 13px 10px;
+  }
+
+  .blogs .blog-entry td {
+    padding: 12px 0 13px;
   }
 }
